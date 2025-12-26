@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 165 82% 51%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 270 60% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 4%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 165 82% 51%;
+
+    --radius: 1rem;
+
+    --chart-1: 165 82% 51%;
+    --chart-2: 270 60% 60%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 200 80% 55%;
+    --chart-5: 340 75% 55%;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 165 82% 51%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 165 82% 51%;
+
+    --glass-background: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-shadow: 0 0% 0% / 0.3;
+
+    --gradient-mesh: radial-gradient(ellipse at 20% 30%, hsl(270 60% 20% / 0.3) 0%, transparent 50%),
+                     radial-gradient(ellipse at 80% 70%, hsl(165 82% 20% / 0.2) 0%, transparent 50%),
+                     radial-gradient(ellipse at 50% 50%, hsl(200 80% 15% / 0.2) 0%, transparent 70%);
+
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-card/90 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5;
+  }
+
+  .glass-button {
+    @apply bg-secondary/80 backdrop-blur-sm border border-border/50 hover:bg-secondary hover:border-primary/30 transition-all duration-200;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.3), 0 0 60px hsl(var(--accent) / 0.1);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-scan {
+    animation: scan 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(100%); opacity: 0.5; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+}
